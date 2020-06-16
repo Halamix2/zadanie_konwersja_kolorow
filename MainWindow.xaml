@@ -10,8 +10,6 @@
 		<Border x:Name="border" BorderBrush="Black" BorderThickness="1" Height="400" VerticalAlignment="Top" >
 			<Canvas Name="myCanvas" MouseDown="Canvas_MouseDown_1" MouseMove="Canvas_MouseMove_1" MouseUp="Canvas_MouseUp_1"
 			HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="{Binding ActualWidth, ElementName=border}" Height="{Binding ActualHeight, ElementName=border}" Loaded="canvasLoaded">
-				<!--That way white is actually a part of image and can be accounted for in filter-->
-
 				<Canvas.Background>
 					<SolidColorBrush Color="White" Opacity="0"/>
 				</Canvas.Background>

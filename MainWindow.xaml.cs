@@ -51,30 +51,37 @@ namespace Rysowanie
             {
                 Width = myCanvas.ActualWidth,
                 Height = myCanvas.ActualHeight,
-                Fill = new SolidColorBrush(Colors.Red),
+                Fill = new SolidColorBrush(Colors.White),
             };
             Canvas.SetLeft(rect, 0);
             Canvas.SetLeft(rect, 0);
-            // myCanvas.Children.Add(rect);
+            myCanvas.Children.Add(rect);
         }
 
         private void Canvas_MouseDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (e.ButtonState == MouseButtonState.Pressed)
-                currentPoint = e.GetPosition(this);
-
+            //ugly hack to add new ellipse to not edit old one BEFORE any point is set again
             if (tool == Tools.brush)
             {
-
-                myCanvas.CaptureMouse();
-
-                anchorPoint = e.MouseDevice.GetPosition(myCanvas);
-                //Debug.WriteLine(anchorPoint.X);
                 elipse = new Ellipse
                 {
                     Stroke = brush,
 
                 };
+            }
+
+                if (e.ButtonState == MouseButtonState.Pressed)
+                currentPoint = e.GetPosition(this);
+
+            if (tool == Tools.brush)
+            {
+                myCanvas.CaptureMouse();
+
+                anchorPoint = e.MouseDevice.GetPosition(myCanvas);
+                Debug.WriteLine("anchor");
+                Debug.WriteLine(anchorPoint.X);
+                Debug.WriteLine(anchorPoint.Y);
+
                 myCanvas.Children.Add(elipse);
             }
         }
