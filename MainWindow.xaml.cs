@@ -78,10 +78,9 @@ namespace Rysowanie
                 myCanvas.CaptureMouse();
 
                 anchorPoint = e.MouseDevice.GetPosition(myCanvas);
-                Debug.WriteLine("anchor");
-                Debug.WriteLine(anchorPoint.X);
-                Debug.WriteLine(anchorPoint.Y);
 
+                //force points refresh
+                Canvas_MouseMove_1(sender, e);
                 myCanvas.Children.Add(elipse);
             }
         }
